@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="triangle" class="org.koushik.javabrains.Triangle" name = "triangle-name" autowire="byName"> 
+		<!-- See! There is no points (properties) defined here for "triangle"
+		     We use autowire by name. Spring looks at class Triangle, see three properties pointA, pointB and pointC
+		     then it looks at this file, find that there some beans with names like those, so spring assign
+		     those beans to these properties of triangle.
+		     We can do autowire="byType", but that only works if there is only one bean of a type. Otherwise,
+		     spring does not know which bean to pick. -->
+	</bean>
+	
+	<bean id="pointA" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="pointB" class="org.koushik.javabrains.Point">
+		<property name="x" value="1"/>
+		<property name="y" value="1"/>
+	</bean>
+	
+	<bean id="pointC" class="org.koushik.javabrains.Point">
+		<property name="x" value="2"/>
+		<property name="y" value="2"/>
+	</bean>
+	
+	
+	
+</beans>

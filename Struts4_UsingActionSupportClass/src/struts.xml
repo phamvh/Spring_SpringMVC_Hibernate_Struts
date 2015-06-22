@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<include file="login.xml"/> <!-- Split the configuration file into smaller files to make things more oganized -->
+	
+	<package name = "default" namespace="/tutorials" extends="struts-default">
+		<action name="get*" class="org.koushik.javabrains.action.{1}Action">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/error.jsp</result>
+		</action>
+	</package>
+	
+	<!-- Dummy action, which redirect the alias "search" to "searchForm.jsp -->
+	<package name="searching" namespace="/" extends="struts-default">
+		<action name="search*">
+			<result>search{1}.jsp</result>
+		</action>
+	</package>
+</struts>

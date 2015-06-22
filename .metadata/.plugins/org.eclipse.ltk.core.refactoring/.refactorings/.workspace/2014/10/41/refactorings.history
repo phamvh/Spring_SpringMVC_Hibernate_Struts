@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SpringMVCMkyong1_HandlignException&apos; to &apos;SpringMVCMkyong1_HandlingException&apos;" description="Rename resource &apos;SpringMVCMkyong1_HandlignException&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/SpringMVCMkyong1_HandlignException" name="SpringMVCMkyong1_HandlingException" stamp="1412572202271" updateReferences="true"/>
+</session>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+ <!--  To enable @AspectJ support with XML based configuration use the aop:aspectj-autoproxy element: -->         
+<aop:aspectj-autoproxy/>
+           
+<bean name = "triangle" class="org.koushik.javabrains.model.Triangle">
+  <property name="name" value ="Triangle Name"></property>
+</bean>
+<bean name = "circle" class="org.koushik.javabrains.model.Circle">
+  <property name="name" value ="Circle Name"></property>
+</bean>
+
+<bean name = "shapeService" class="org.koushik.javabrains.service.ShapeService" autowire="byName">
+ 
+</bean>
+
+<!-- This is NOT to let spring know that LoggingAspect is an aspect class. Spring already knows about this via the notation in the class itself.
+This is simply to create an instance (bean) of this class. That's it.-->
+<bean name="loggingAspect" class="org.koushik.javabrains.aspect.LoggingAspect"/>
+           
+ </beans>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

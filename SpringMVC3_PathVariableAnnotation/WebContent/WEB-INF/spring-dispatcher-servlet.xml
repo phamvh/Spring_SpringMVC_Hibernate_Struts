@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xmlns:mvc="http://www.springframework.org/schema/mvc" 
+   xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+   http://www.springframework.org/schema/mvc 
+   http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+
+    <!-- This tells spring to scan this given package for classes that are
+    components. Specifically, classes with annotations @Controller, @Service, etc. -->
+    <context:component-scan base-package="com.gontuseries.hellocontroller"/>
+    
+    <mvc:annotation-driven/>
+   
+   <!-- Since in classes, a view name is only the name of the file without extension (suffix) 
+   and without prefix. For example, a view name is "HelloPage". Spring will add prefix and suffix
+   to the view name in order to make a complete valid URI to a view, which is /WEB-INF/HelloPage.jsp" -->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

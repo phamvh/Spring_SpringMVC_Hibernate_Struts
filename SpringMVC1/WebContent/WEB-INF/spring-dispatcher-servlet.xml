@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!--  This is more like a utility class that can map a url to a class.
+	The bean below with name "/welcome" needs this handler -->
+	<bean id="HandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	
+	<bean name="/welcome" class = "com.gontuseries.hellocontroller.HelloController"/>
+   
+   <!-- Since in classes, a view name is only the name of the file without extension (suffix) 
+   and without prefix. For example, a view name is "HelloPage". Spring will add prefix and suffix
+   to the view name in order to make a complete valid URI to a view, which is /WEB-INF/HelloPage.jsp" -->
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

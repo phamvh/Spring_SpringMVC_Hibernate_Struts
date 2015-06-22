@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-init-method="myOwnInit" default-destroy-method="myOwnCleanUp">
+
+    <bean id="parenttriangle" class="org.koushik.javabrains.Triangle" abstract="true">
+    	<property name="pointA" ref="zeroPoint"/>
+    </bean>
+    
+    
+	<bean id="triangle" class="org.koushik.javabrains.Triangle" name = "triangle-name" parent="parenttriangle"> <!-- name = "triangle-name" can be used the same way as id in java application-->
+		<property name="pointB" ref="Point1"/> <!-- inner bean -->	
+		<property name="pointC" ref="Point2"/>
+		
+	</bean>
+	
+	<bean id="zeroPoint" class="org.koushik.javabrains.Point">
+		<property name="x" value="${pointA.pointX}"/>
+		<property name="y" value="${pointA.pointY}"/>
+	</bean>
+	
+	<bean id="Point1" class="org.koushik.javabrains.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="Point2" class="org.koushik.javabrains.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+				
+	</bean>
+	
+	
+	<!-- This is just to let Spring know that there is a post processor -->
+	<bean class="org.koushik.javabrains.DisplayNamePostProcessor"/>
+	
+	<bean class="org.koushik.javabrains.MyBeanFactoryPostProcessor"/>
+	
+	<!-- This is an example of a Bean Factory Post Processor
+	See class MyBeanFactoryPostProcessor for detailed comment. -->	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:org/koushik/javabrains/point_config.properties"/>
+	</bean>
+	
+	<!-- You can use alias as name or id -->
+	<alias name = "triangle" alias = "triangle-alias"/>
+	
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

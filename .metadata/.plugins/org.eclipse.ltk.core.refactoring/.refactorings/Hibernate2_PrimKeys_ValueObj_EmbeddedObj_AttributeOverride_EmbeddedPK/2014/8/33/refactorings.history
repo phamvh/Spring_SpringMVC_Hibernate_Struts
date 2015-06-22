@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Address.java&apos; to &apos;Hibernate3_SaveCollections/src/org.koushik.javabrains.dto&apos;&#x0A;- Original project: &apos;Hibernate2_PrimKeys_ValueObj_EmbeddedObj_AttributeOverride_EmbeddedPK&apos;&#x0A;- Destination element: &apos;Hibernate3_SaveCollections/src/org.koushik.javabrains.dto&apos;&#x0A;- Original element: &apos;org.koushik.javabrains.dto.Address.java&apos;" description="Copy compilation unit" destination="=Hibernate3_SaveCollections/src&lt;org.koushik.javabrains.dto" element1="/src&lt;org.koushik.javabrains.dto{Address.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1408162129168" units="1" version="1.0"/>
+</session>

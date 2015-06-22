@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+
+	
+	<package name = "default" namespace="/tutorials" extends="struts-default">
+	    <!-- This uses wild cards: whatever the name of the action is in "*" will be taken
+	    as the name of the method {1} in class TutorialAction.
+	    Of course, one can always specify the specific name of the method, such as:
+	       method="getTutorial" 
+	       
+	    Note that with this config, methods can have any names, not confined to execute()   -->
+		<action name="*" class="org.koushik.javabrains.action.TutorialAction" method="{1}">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/error.jsp</result>
+		</action>
+	</package>
+	
+	
+</struts>

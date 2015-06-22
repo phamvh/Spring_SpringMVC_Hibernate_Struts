@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="triangle" class="org.koushik.javabrains.Triangle" name = "triangle-name" scope = "singleton"> 
+	<!-- name = "triangle-name" can be used the same way as id in java application-->
+	<!-- singleton is the default scope. Other scopes are prototype, ... -->
+		<property name = "points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point1"/>
+				<ref bean="point2"/>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<bean id="zeroPoint" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="point1" class="org.koushik.javabrains.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>
+	</bean>
+	<bean id="point2" class="org.koushik.javabrains.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+	</bean>
+	
+	<!-- You can use alias as name or id -->
+	<alias name = "triangle" alias = "triangle-alias"/>
+	
+	
+</beans>

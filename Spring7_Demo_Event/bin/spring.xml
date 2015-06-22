@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+           
+	<bean id="triangle" class="org.koushik.javabrains.Triangle" name = "triangle-name" scope = "singleton"> 
+	<!-- name = "triangle-name" can be used the same way as id in java application-->
+	<!-- singleton is the default scope. Other scopes are prototype, ... -->
+		<property name = "points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point1"/>
+				<ref bean="point2"/>
+			</list>
+		</property>
+		
+	</bean>
+	<alias name = "triangle" alias = "triangle-alias"/>
+	
+	<bean id="zeroPoint" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="point1" class="org.koushik.javabrains.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>
+	</bean>
+	<bean id="point2" class="org.koushik.javabrains.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="messageSource" class ="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<!-- list of all properties-files here -->
+			<list>
+				<value>mymessages</value>
+			</list>
+		</property>
+	</bean>
+	
+	<context:annotation-config/>
+	<context:component-scan base-package="org.koushik.javabrains"/>
+	
+</beans>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns:context="http://www.springframework.org/schema/context">
+    
+	<bean id="triangle" class="org.koushik.javabrains.Triangle" name = "triangle-name"> 
+	<!-- name = "triangle-name" can be used the same way as id in java application-->
+		<property name="pointA" ref="zeroPoint"/>	<!-- instead of ref, one can use idref to indicate that this is an id, not a name or alias -->
+		<property name="pointB"> <!-- inner bean -->
+			<bean class="org.koushik.javabrains.Point">
+				<property name="x" value="-20"/>
+				<property name="y" value="0"/>
+			</bean>
+		</property>	
+		<property name="pointC">
+			<bean class="org.koushik.javabrains.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="zeroPoint" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<!-- You can use alias as name or id -->
+	<alias name = "triangle" alias = "triangle-alias"/>
+	
+	<bean id="circle" class="org.koushik.javabrains.Circle" name = "circle-name"> <!-- name = "triangle-name" can be used the same way as id in java application-->
+		<property name="center" ref="zeroPoint"/>	
+		
+	</bean>
+	
+	<!-- This bean is for autowired in class AnotherCircle. -->
+	<bean id="center" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="another_circle" class="org.koushik.javabrains.AnotherCircle" name = "another-circle-name"> <!-- name = "triangle-name" can be used the same way as id in java application-->
+		<!-- This another circle has no property defined in here.
+		However, its setter method has annotation Autowired, which is handled 
+		by AutowiredAnnotationBeanPostProcessor defined at the bottom of this file.
+		First, it tries to find a bean of the same type of "center". However, there are
+		multiple beans of that type (Point), so it tries to match by name. There is a bean with name "center"
+		so it assigns that bean to the center of this another-circle.-->
+		
+	</bean>
+	
+	<!-- See the comment in the Circle class, for method public void setCenter(Point center)
+	This tells spring to scan for methods that have annotation "@Required".
+	Spring will ensure that those methods have to be called when beans are created.
+	Mostly, the Required methods are those that set values to important properties of a bean, which can not
+	be empty -->
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>
+	
+	<!-- Similarly, this is to tell spring to scan for methods that have annotation Autowired.
+	 -->
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+	
+	<!--  Note that the two above beans' declaration can be shortened by using a shortcut below: -->
+	<!-- <context:annotation.config/> -->
+	
+	
+</beans>

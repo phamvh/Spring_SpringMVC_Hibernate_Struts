@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns:context="http://www.springframework.org/schema/context">
+    
+	<!-- This is for autowriring  by name by using @Resource. See the Circle class. -->
+	<bean id="center" class="org.koushik.javabrains.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+
+	<!--  Note that no circle bean is defined here. We use @Component inside the class itself
+	to register bean to spring. -->
+	
+	<!-- This is to let spring know that it needs to scan the given package for beans, whose registrations are given
+	inside their class themselves, but not in this spring.xml file. This is another way to create bean.
+	The annotations that it needs to scan is @Component, @Service, @Repository (for data object), @Controller -->
+	<context:component-scan base-package="org.koushik.javabrains"></context:component-scan>
+	
+	<!--  This is a shortcut for two beans that have been commented out below. -->
+    <context:annotation-config/>
+	
+	<!-- See the comment in the Circle class, for method public void setCenter(Point center)
+	This tells spring to scan for methods that have annotation "@Required".
+	Spring will ensure that those methods have to be called when beans are created.
+	Mostly, the Required methods are those that set values to important properties of a bean, which can not
+	be empty -->
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean> -->
+	
+	<!-- Similarly, this is to tell spring to scan for methods that have annotation Autowired.
+	 -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean> -->
+	
+	
+	
+	
+</beans>

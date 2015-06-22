@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link0</name>
+			<type>2</type>
+			<location>/Users/huypham/.m2/repository</location>
+		</link>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>/Volumes/SHARE/Study/Code/lib/struts-2.3.16.3/src</location>
+		</link>
+		<link>
+			<name>.link2</name>
+			<type>2</type>
+			<location>/Volumes/SHARE/Study/Code/lib/struts-2.3.16.3/src/core/src</location>
+		</link>
+	</linkedResources>
+</projectDescription>
